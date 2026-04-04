@@ -58,12 +58,12 @@ function validate(fields: ApplicationFields): Partial<Record<keyof ApplicationFi
 type FieldErrors = Partial<Record<keyof ApplicationFields, string>>
 
 const inputBase =
-  'w-full bg-transparent border border-border-gold text-text-cream placeholder-text-faint font-sans text-sm px-4 py-3 outline-none transition-colors duration-200 focus:border-gold/60 focus:ring-0'
+  'w-full bg-transparent border border-border-gold text-text-cream placeholder-text-faint font-sans text-[15px] px-4 py-3 outline-none transition-colors duration-200 focus:border-gold/60 focus:ring-0'
 
 const labelBase =
-  'block font-sans text-[10px] tracking-ultra uppercase text-text-muted mb-2'
+  'block font-sans text-[11px] font-medium tracking-ultra uppercase text-text-muted mb-2'
 
-const errorBase = 'mt-1 font-sans text-[10px] text-red-400/80'
+const errorBase = 'mt-1 font-sans text-xs text-red-400/80'
 
 function Field({
   label,
@@ -295,7 +295,7 @@ export default function ApplicationForm() {
         <button
           type="submit"
           disabled={status === 'submitting'}
-          className="w-full sm:w-auto border border-gold text-gold font-sans text-xs tracking-ultra uppercase px-10 py-3.5 transition-all duration-300 hover:bg-gold hover:text-bg-primary disabled:opacity-40 disabled:cursor-not-allowed"
+          className="w-full sm:w-auto border border-gold text-gold font-sans text-[11px] font-medium tracking-ultra uppercase px-10 py-3.5 transition-all duration-300 hover:bg-gold hover:text-bg-primary disabled:opacity-40 disabled:cursor-not-allowed"
         >
           {status === 'submitting' ? 'Submitting...' : 'Submit Application'}
         </button>

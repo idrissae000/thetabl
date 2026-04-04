@@ -8,6 +8,10 @@ import { siteContent } from '@/data/site'
 import { upcomingEvents } from '@/data/events'
 import { sponsors } from '@/data/sponsors'
 
+// Real images from the current live site
+const HERO_IMAGE = 'https://thetablebybb.carrd.co/assets/images/image02.jpg?v=1da90e90'
+const ABOUT_IMAGE = 'https://thetablebybb.carrd.co/assets/images/image01.jpg?v=1da90e90'
+
 export default function HomePage() {
   const { hero, about, exclusivity } = siteContent
 
@@ -18,30 +22,30 @@ export default function HomePage() {
         className="relative min-h-screen flex flex-col items-center justify-center text-center px-6 overflow-hidden"
         aria-label="Hero"
       >
-        {/* Background: dark cinematic gradient — replace src="/images/hero.jpg" once assets are available */}
-        <div
-          className="absolute inset-0 bg-bg-primary"
-          style={{
-            background:
-              'radial-gradient(ellipse 90% 70% at 50% 40%, #2a1a08 0%, #140e06 35%, #0a0807 70%)',
-          }}
+        {/* Background: real photo from current site */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={HERO_IMAGE}
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover"
         />
-        {/* Vignette overlay */}
+        {/* Dark overlay for text legibility */}
+        <div className="absolute inset-0 bg-black/65" />
+        {/* Vignette */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              'radial-gradient(ellipse 100% 100% at 50% 50%, transparent 30%, rgba(0,0,0,0.7) 100%)',
+              'radial-gradient(ellipse 100% 100% at 50% 50%, transparent 20%, rgba(0,0,0,0.6) 100%)',
           }}
         />
 
         {/* Hero content */}
         <div className="relative z-10 flex flex-col items-center gap-6 max-w-xl mx-auto">
 
-          {/* Logo mark */}
           <TableLogo className="w-16 h-16 text-gold opacity-80" />
 
-          {/* Brand name */}
           <div>
             <h1
               className="font-serif text-5xl sm:text-6xl md:text-7xl text-gold tracking-widest uppercase leading-none"
@@ -49,24 +53,21 @@ export default function HomePage() {
             >
               {hero.heading}
             </h1>
-            <div className="mt-1 flex items-center justify-center gap-3">
+            <div className="mt-2 flex items-center justify-center gap-3">
               <div className="h-px w-10 bg-gold/30" />
-              <span className="font-sans text-[10px] tracking-ultra uppercase text-text-muted">
+              <span className="font-sans text-[11px] tracking-ultra uppercase text-text-muted">
                 ({hero.byline})
               </span>
               <div className="h-px w-10 bg-gold/30" />
             </div>
           </div>
 
-          {/* Ornamental divider */}
           <Divider className="w-32" />
 
-          {/* Tagline */}
-          <p className="font-serif text-lg md:text-xl italic text-text-cream/80 leading-snug">
+          <p className="font-serif text-xl md:text-2xl italic text-text-cream/90 leading-snug">
             {hero.tagline}
           </p>
 
-          {/* CTA buttons */}
           <div className="flex flex-col sm:flex-row items-center gap-4 mt-2">
             <Button href={hero.cta.primary.href} variant="outline">
               {hero.cta.primary.label}
@@ -95,7 +96,7 @@ export default function HomePage() {
             ))}
           </div>
 
-          <p className="mt-10 text-center font-sans text-[10px] tracking-ultra uppercase text-text-muted">
+          <p className="mt-10 text-center font-sans text-[11px] tracking-ultra uppercase text-text-muted">
             Additional dates to be announced.{' '}
             <Link href="/apply" className="text-gold hover:text-gold-light transition-colors underline underline-offset-4 decoration-gold/30">
               Be the first to know — Apply to join
@@ -114,7 +115,7 @@ export default function HomePage() {
               sponsor.displayStyle === 'text' ? (
                 <span
                   key={sponsor.id}
-                  className="font-sans text-sm tracking-wide uppercase text-text-muted hover:text-gold transition-colors duration-200 cursor-default"
+                  className="font-sans text-sm font-medium tracking-wide uppercase text-text-muted hover:text-gold transition-colors duration-200 cursor-default"
                   style={{ letterSpacing: '0.1em' }}
                 >
                   {sponsor.name}
@@ -150,39 +151,31 @@ export default function HomePage() {
 
             <Divider className="mb-8" />
 
-            <p className="font-sans text-sm leading-loose text-text-cream/75 mb-10">
+            <p className="font-sans text-[15px] leading-[1.85] text-text-cream/85 mb-10">
               {about.body}
             </p>
 
-            <blockquote className="border-l border-gold/40 pl-5">
-              <p className="font-serif text-xl italic text-text-cream/80 leading-snug mb-2">
+            <blockquote className="border-l-2 border-gold/40 pl-5">
+              <p className="font-serif text-xl italic text-text-cream/85 leading-snug mb-2">
                 &ldquo;{about.quote}&rdquo;
               </p>
-              <cite className="font-sans text-[10px] tracking-ultra uppercase text-text-muted not-italic">
+              <cite className="font-sans text-[11px] tracking-ultra uppercase text-text-muted not-italic">
                 — {about.quoteAttribution}
               </cite>
             </blockquote>
           </div>
 
-          {/* Image column — replace with actual asset */}
-          <div className="relative aspect-[4/5] w-full max-w-sm mx-auto lg:max-w-none">
-            <div
-              className="w-full h-full border border-border-gold"
-              style={{
-                background:
-                  'radial-gradient(ellipse at 40% 60%, #2a1a08 0%, #0d0a06 60%)',
-              }}
-              aria-label="Candlelit dinner setting"
+          {/* Image column — real photo from current site */}
+          <div className="relative aspect-[4/5] w-full max-w-sm mx-auto lg:max-w-none overflow-hidden">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={ABOUT_IMAGE}
+              alt="People in conversation around a table at The Table"
+              className="w-full h-full object-cover"
             />
-            {/* Placeholder label — remove once real image is placed at /images/about-dinner.jpg */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <p className="font-sans text-[9px] tracking-ultra uppercase text-text-faint text-center px-4">
-                Place hero image at<br />/public/images/about-dinner.jpg
-              </p>
-            </div>
             {/* Corner accents */}
-            <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-gold/40" />
-            <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-gold/40" />
+            <div className="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-gold/40" />
+            <div className="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-gold/40" />
           </div>
         </div>
       </section>
@@ -192,18 +185,18 @@ export default function HomePage() {
         <div className="max-w-3xl mx-auto text-center">
           <SectionHeading className="mb-8">Exclusivity &amp; Quality</SectionHeading>
 
-          <p className="font-sans text-sm leading-loose text-text-cream/70 mb-10">
+          <p className="font-sans text-[15px] leading-[1.85] text-text-cream/80 mb-10">
             We maintain a{' '}
             <em className="font-serif italic text-text-cream not-italic font-semibold">selective</em>{' '}
             {exclusivity.body.replace('We maintain a selective ', '')}
           </p>
 
-          {/* Partner / member logos */}
+          {/* Partner logos */}
           <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
             {sponsors.map((sponsor) => (
               <span
                 key={sponsor.id}
-                className="font-sans text-xs tracking-wide uppercase text-text-muted/60"
+                className="font-sans text-xs font-medium tracking-wide uppercase text-text-muted/70"
                 style={{ letterSpacing: '0.08em' }}
               >
                 {sponsor.name}

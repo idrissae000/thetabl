@@ -5,10 +5,10 @@ import Divider from '@/components/ui/Divider'
 import { siteContent } from '@/data/site'
 
 const inputBase =
-  'w-full bg-transparent border border-border-gold text-text-cream placeholder-text-faint font-sans text-sm px-4 py-3 outline-none transition-colors duration-200 focus:border-gold/60'
+  'w-full bg-transparent border border-border-gold text-text-cream placeholder-text-faint font-sans text-[15px] px-4 py-3 outline-none transition-colors duration-200 focus:border-gold/60'
 
 const labelBase =
-  'block font-sans text-[10px] tracking-ultra uppercase text-text-muted mb-2'
+  'block font-sans text-[11px] font-medium tracking-ultra uppercase text-text-muted mb-2'
 
 const INQUIRY_TYPES = [
   'General Inquiry',
@@ -55,14 +55,14 @@ export default function ContactPage() {
 
         {/* Header */}
         <div className="text-center mb-14">
-          <p className="font-sans text-[10px] tracking-ultra uppercase text-text-muted mb-4">
+          <p className="font-sans text-[11px] tracking-ultra uppercase text-text-muted mb-4">
             Get in Touch
           </p>
           <h1 className="font-serif text-4xl md:text-5xl text-gold mb-4">
             Contact
           </h1>
           <Divider className="my-6" />
-          <p className="font-sans text-sm leading-loose text-text-muted max-w-sm mx-auto">
+          <p className="font-sans text-[15px] leading-[1.85] text-text-muted max-w-sm mx-auto">
             For sponsorship inquiries, press, or general questions.
             For membership, please use the{' '}
             <a href="/apply" className="text-gold hover:text-gold-light transition-colors underline underline-offset-4 decoration-gold/30">
@@ -75,7 +75,7 @@ export default function ContactPage() {
           <div className="text-center py-12">
             <div className="w-12 h-px bg-gold mx-auto mb-6" />
             <p className="font-serif text-2xl text-gold mb-3">Message Received</p>
-            <p className="font-sans text-sm text-text-muted">
+            <p className="font-sans text-[15px] text-text-muted">
               We will be in touch shortly.
             </p>
             <div className="w-12 h-px bg-gold mx-auto mt-6" />
@@ -83,7 +83,6 @@ export default function ContactPage() {
         ) : (
           <form onSubmit={handleSubmit} noValidate className="space-y-6">
 
-            {/* Name + Email */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
                 <label className={labelBase}>
@@ -113,7 +112,6 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* Inquiry type */}
             <div>
               <label className={labelBase}>Inquiry Type</label>
               <select
@@ -134,7 +132,6 @@ export default function ContactPage() {
               </select>
             </div>
 
-            {/* Message */}
             <div>
               <label className={labelBase}>
                 Message <span className="text-gold/50">*</span>
@@ -158,7 +155,7 @@ export default function ContactPage() {
             <button
               type="submit"
               disabled={status === 'submitting'}
-              className="w-full sm:w-auto border border-gold text-gold font-sans text-xs tracking-ultra uppercase px-10 py-3.5 transition-all duration-300 hover:bg-gold hover:text-bg-primary disabled:opacity-40 disabled:cursor-not-allowed"
+              className="w-full sm:w-auto border border-gold text-gold font-sans text-[11px] font-medium tracking-ultra uppercase px-10 py-3.5 transition-all duration-300 hover:bg-gold hover:text-bg-primary disabled:opacity-40 disabled:cursor-not-allowed"
             >
               {status === 'submitting' ? 'Sending...' : 'Send Message'}
             </button>
@@ -169,7 +166,7 @@ export default function ContactPage() {
         <div className="mt-14 pt-10 border-t border-border-gold flex flex-col sm:flex-row items-center justify-center gap-8 text-center">
           <a
             href={`mailto:${siteContent.footer.emailAddress}`}
-            className="font-sans text-[10px] tracking-ultra uppercase text-text-muted hover:text-gold transition-colors duration-200"
+            className="font-sans text-[11px] tracking-ultra uppercase text-text-muted hover:text-gold transition-colors duration-200"
           >
             {siteContent.footer.emailAddress}
           </a>
@@ -178,7 +175,7 @@ export default function ContactPage() {
             href={siteContent.footer.instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-sans text-[10px] tracking-ultra uppercase text-text-muted hover:text-gold transition-colors duration-200"
+            className="font-sans text-[11px] tracking-ultra uppercase text-text-muted hover:text-gold transition-colors duration-200"
           >
             Instagram
           </a>

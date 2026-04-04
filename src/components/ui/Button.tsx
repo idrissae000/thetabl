@@ -22,7 +22,7 @@ const variantStyles: Record<ButtonVariant, string> = {
 }
 
 const base =
-  'inline-block font-sans text-xs tracking-ultra uppercase px-8 py-3 transition-all duration-300 cursor-pointer'
+  'inline-block font-sans text-[11px] font-medium tracking-ultra uppercase px-8 py-3 transition-all duration-300 cursor-pointer'
 
 export default function Button({
   href,

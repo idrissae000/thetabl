@@ -48,7 +48,7 @@ export default function Footer() {
         </div>
 
         {/* Links row */}
-        <div className="flex items-center gap-2 font-sans text-[10px] tracking-ultra uppercase text-text-muted">
+        <div className="flex items-center gap-2 font-sans text-[11px] font-medium tracking-ultra uppercase text-text-muted">
           <Link href={footer.applyHref} className="hover:text-gold transition-colors duration-200">
             Apply
           </Link>

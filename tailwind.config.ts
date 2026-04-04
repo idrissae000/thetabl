@@ -17,16 +17,16 @@ const config: Config = {
         'surface-2':    '#1e1812',
         'border-gold':  'rgba(201, 168, 76, 0.18)',
         'text-cream':   '#e8dcc8',
-        'text-muted':   '#8a7355',
-        'text-faint':   '#5a4a35',
+        'text-muted':   '#a08d6e',     // was #8a7355 — bumped for readability
+        'text-faint':   '#6a5a42',     // was #5a4a35 — bumped for readability
       },
       fontFamily: {
         serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
         sans:  ['Montserrat', 'system-ui', 'sans-serif'],
       },
       letterSpacing: {
-        'ultra': '0.35em',
-        'wide-xl': '0.2em',
+        'ultra': '0.18em',       // was 0.35em — reduced for readability
+        'wide-xl': '0.12em',     // was 0.2em — reduced for readability
       },
       backgroundImage: {
         'gold-gradient': 'linear-gradient(135deg, #c9a84c 0%, #e2c97e 50%, #c9a84c 100%)',

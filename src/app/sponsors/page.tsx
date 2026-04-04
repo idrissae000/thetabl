@@ -14,7 +14,6 @@ export default function SponsorsPage() {
     <div className="min-h-screen px-6 py-20">
       <div className="max-w-3xl mx-auto">
 
-        {/* Page header */}
         <div className="text-center mb-14">
           <SectionHeading subtitle="Partners & Sponsors">
             Sponsors
@@ -24,7 +23,7 @@ export default function SponsorsPage() {
 
         {/* Current partners */}
         <div className="mb-16">
-          <p className="font-sans text-[9px] tracking-ultra uppercase text-text-faint text-center mb-8">
+          <p className="font-sans text-[11px] tracking-ultra uppercase text-text-faint text-center mb-8">
             Current Partners
           </p>
 
@@ -44,7 +43,7 @@ export default function SponsorsPage() {
                   />
                 ) : (
                   <span
-                    className="font-sans text-sm text-text-muted hover:text-gold transition-colors duration-200"
+                    className="font-sans text-sm font-medium text-text-muted hover:text-gold transition-colors duration-200"
                     style={{ letterSpacing: '0.1em' }}
                   >
                     {sponsor.name}
@@ -57,17 +56,16 @@ export default function SponsorsPage() {
 
         <Divider className="mb-14" />
 
-        {/* Sponsorship inquiry */}
         <div className="text-center">
           <h2 className="font-serif text-3xl text-gold mb-4">
             Become a Partner
           </h2>
-          <p className="font-sans text-sm leading-loose text-text-muted max-w-md mx-auto mb-8">
+          <p className="font-sans text-[15px] leading-[1.85] text-text-muted max-w-md mx-auto mb-8">
             The Table offers select sponsorship opportunities for brands aligned with our
             values of excellence, discretion, and meaningful conversation. We work with
             partners across finance, hospitality, technology, and culture.
           </p>
-          <p className="font-sans text-sm leading-loose text-text-muted max-w-md mx-auto mb-10">
+          <p className="font-sans text-[15px] leading-[1.85] text-text-muted max-w-md mx-auto mb-10">
             Sponsorship positions are limited per city and per season. Inquire below
             to learn about availability and partnership structures.
           </p>

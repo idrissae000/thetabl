@@ -21,7 +21,7 @@ export default function Header() {
             <div className="font-serif text-sm tracking-wide-xl text-gold uppercase">
               {siteContent.brand.name}
             </div>
-            <div className="font-sans text-[9px] tracking-ultra text-text-muted uppercase">
+            <div className="font-sans text-[10px] tracking-wide-xl text-text-muted uppercase">
               ({siteContent.brand.byline})
             </div>
           </div>
@@ -35,7 +35,7 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`font-sans text-[10px] tracking-ultra uppercase transition-colors duration-200 ${
+                className={`font-sans text-[11px] font-medium tracking-ultra uppercase transition-colors duration-200 ${
                   active
                     ? 'text-gold'
                     : 'text-text-muted hover:text-gold'
@@ -80,7 +80,7 @@ export default function Header() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className={`font-sans text-[11px] tracking-ultra uppercase transition-colors ${
+                className={`font-sans text-xs font-medium tracking-ultra uppercase transition-colors ${
                   active ? 'text-gold' : 'text-text-muted hover:text-gold'
                 }`}
               >

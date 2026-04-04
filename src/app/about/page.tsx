@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   description: 'The Table is a private room for exceptional individuals. Learn about who we are, who it\'s for, and why it exists.',
 }
 
+// Real images from the current site
+const ABOUT_IMAGE = 'https://thetablebybb.carrd.co/assets/images/image03.jpg?v=1da90e90'
+
 const pillars = [
   {
     id: 'who-we-are',
@@ -36,13 +39,13 @@ export default function AboutPage() {
 
         {/* Page header */}
         <div className="text-center mb-16">
-          <p className="font-sans text-[10px] tracking-ultra uppercase text-text-muted mb-4">
+          <p className="font-sans text-[11px] tracking-ultra uppercase text-text-muted mb-4">
             Our Story
           </p>
           <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-gold mb-4 leading-tight">
             {about.heading}
           </h1>
-          <p className="font-serif text-xl italic text-text-cream/60">
+          <p className="font-serif text-xl italic text-text-cream/70">
             {about.subheading}
           </p>
           <Divider className="mt-8 max-w-xs mx-auto" />
@@ -51,35 +54,29 @@ export default function AboutPage() {
         {/* Main body + image */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start mb-20">
           <div>
-            <p className="font-sans text-sm leading-loose text-text-cream/75 mb-10">
+            <p className="font-sans text-[15px] leading-[1.85] text-text-cream/85 mb-10">
               {about.body}
             </p>
-            <blockquote className="border-l border-gold/40 pl-5">
-              <p className="font-serif text-xl italic text-text-cream/80 leading-snug mb-2">
+            <blockquote className="border-l-2 border-gold/40 pl-5">
+              <p className="font-serif text-xl italic text-text-cream/85 leading-snug mb-2">
                 &ldquo;{about.quote}&rdquo;
               </p>
-              <cite className="font-sans text-[10px] tracking-ultra uppercase text-text-muted not-italic">
+              <cite className="font-sans text-[11px] tracking-ultra uppercase text-text-muted not-italic">
                 — {about.quoteAttribution}
               </cite>
             </blockquote>
           </div>
 
-          {/* Image placeholder */}
-          <div className="relative aspect-[3/4] w-full max-w-sm mx-auto lg:max-w-none">
-            <div
-              className="w-full h-full border border-border-gold"
-              style={{
-                background: 'radial-gradient(ellipse at 40% 60%, #2a1a08 0%, #0d0a06 70%)',
-              }}
-              aria-label="Dinner setting"
+          {/* Real image from current site */}
+          <div className="relative aspect-[3/4] w-full max-w-sm mx-auto lg:max-w-none overflow-hidden">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={ABOUT_IMAGE}
+              alt="Guests mingling during a Table session"
+              className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <p className="font-sans text-[9px] tracking-ultra uppercase text-text-faint text-center px-4">
-                Place image at<br />/public/images/about-dinner.jpg
-              </p>
-            </div>
-            <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-gold/40" />
-            <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-gold/40" />
+            <div className="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-gold/40" />
+            <div className="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-gold/40" />
           </div>
         </div>
 
@@ -97,7 +94,7 @@ export default function AboutPage() {
                 <h3 className="font-serif text-xl text-gold mb-4">
                   {pillar.heading}
                 </h3>
-                <p className="font-sans text-sm leading-loose text-text-muted">
+                <p className="font-sans text-[14px] leading-[1.8] text-text-muted">
                   {pillar.body}
                 </p>
               </div>
@@ -105,7 +102,6 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* CTA */}
         <div className="text-center">
           <Button href="/apply" variant="outline">
             Apply to Join

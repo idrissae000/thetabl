@@ -2,8 +2,12 @@ import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
   images: {
-    // Allow external image domains here as needed
-    remotePatterns: [],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'thetablebybb.carrd.co',
+      },
+    ],
   },
 }
 

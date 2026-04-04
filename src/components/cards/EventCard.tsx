@@ -19,23 +19,19 @@ export default function EventCard({ city, cityFull, date, status }: EventCardPro
       <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-gold/30" />
 
       <div>
-        {/* City short name */}
         <div className="font-serif text-3xl text-gold leading-none mb-1">
           {city}
         </div>
-        {/* Full city name */}
-        <div className="font-sans text-[9px] tracking-ultra uppercase text-text-muted">
+        <div className="font-sans text-[11px] tracking-ultra uppercase text-text-muted">
           {cityFull}
         </div>
       </div>
 
-      {/* Date */}
       <div className="font-serif text-lg text-text-cream italic">
         {date}
       </div>
 
-      {/* Status badge */}
-      <div className="border border-gold/30 px-4 py-1.5 font-sans text-[9px] tracking-ultra uppercase text-text-muted group-hover:border-gold/50 transition-colors">
+      <div className="border border-gold/30 px-4 py-1.5 font-sans text-[11px] tracking-ultra uppercase text-text-muted group-hover:border-gold/50 transition-colors">
         {statusLabel[status]}
       </div>
     </div>
