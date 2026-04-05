@@ -14,14 +14,14 @@ export default function SectionHeading({
   return (
     <div className={`${align === 'center' ? 'text-center' : 'text-left'} ${className}`}>
       <div className={`flex items-center gap-4 ${align === 'center' ? 'justify-center' : ''}`}>
-        <span className="text-gold/40 font-serif text-lg">—</span>
+        <span className="text-gold/50 font-serif text-xl">—</span>
         <h2 className="font-serif text-2xl md:text-3xl text-gold tracking-wide">
           {children}
         </h2>
-        <span className="text-gold/40 font-serif text-lg">—</span>
+        <span className="text-gold/50 font-serif text-xl">—</span>
       </div>
       {subtitle && (
-        <p className="mt-2 font-sans text-[11px] tracking-ultra uppercase text-text-muted">
+        <p className="mt-2 font-sans text-xs font-medium tracking-ultra uppercase text-text-muted">
           {subtitle}
         </p>
       )}

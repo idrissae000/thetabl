@@ -13,42 +13,20 @@ export default function SponsorsPage() {
   return (
     <div className="min-h-screen px-6 py-20">
       <div className="max-w-3xl mx-auto">
-
         <div className="text-center mb-14">
-          <SectionHeading subtitle="Partners & Sponsors">
-            Sponsors
-          </SectionHeading>
+          <SectionHeading subtitle="Partners & Sponsors">Sponsors</SectionHeading>
           <Divider className="mt-6 max-w-xs mx-auto" />
         </div>
 
-        {/* Current partners */}
         <div className="mb-16">
-          <p className="font-sans text-[11px] tracking-ultra uppercase text-text-faint text-center mb-8">
-            Current Partners
-          </p>
-
+          <p className="font-sans text-xs font-medium tracking-ultra uppercase text-text-faint text-center mb-8">Current Partners</p>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-px border border-border-gold">
             {sponsors.map(sponsor => (
-              <div
-                key={sponsor.id}
-                className="flex items-center justify-center p-8 border-border-gold hover:bg-surface transition-colors duration-200 cursor-default"
-                style={{ borderRight: '1px solid rgba(201,168,76,0.18)', borderBottom: '1px solid rgba(201,168,76,0.18)' }}
-              >
-                {sponsor.displayStyle === 'image' && sponsor.logo ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={sponsor.logo}
-                    alt={sponsor.name}
-                    className="h-7 opacity-50 hover:opacity-75 transition-opacity grayscale"
-                  />
-                ) : (
-                  <span
-                    className="font-sans text-sm font-medium text-text-muted hover:text-gold transition-colors duration-200"
-                    style={{ letterSpacing: '0.1em' }}
-                  >
-                    {sponsor.name}
-                  </span>
-                )}
+              <div key={sponsor.id} className="flex items-center justify-center p-8 hover:bg-surface transition-colors duration-200 cursor-default"
+                style={{ borderRight: '1px solid rgba(201,168,76,0.2)', borderBottom: '1px solid rgba(201,168,76,0.2)' }}>
+                <span className="font-sans text-sm font-medium text-text-muted hover:text-gold transition-colors duration-200" style={{ letterSpacing: '0.1em' }}>
+                  {sponsor.name}
+                </span>
               </div>
             ))}
           </div>
@@ -57,23 +35,15 @@ export default function SponsorsPage() {
         <Divider className="mb-14" />
 
         <div className="text-center">
-          <h2 className="font-serif text-3xl text-gold mb-4">
-            Become a Partner
-          </h2>
-          <p className="font-sans text-[15px] leading-[1.85] text-text-muted max-w-md mx-auto mb-8">
-            The Table offers select sponsorship opportunities for brands aligned with our
-            values of excellence, discretion, and meaningful conversation. We work with
-            partners across finance, hospitality, technology, and culture.
+          <h2 className="font-serif text-3xl text-gold mb-4">Become a Partner</h2>
+          <p className="font-sans text-base leading-[1.9] text-text-muted max-w-md mx-auto mb-8">
+            The Table offers select sponsorship opportunities for brands aligned with our values of excellence, discretion, and meaningful conversation.
           </p>
-          <p className="font-sans text-[15px] leading-[1.85] text-text-muted max-w-md mx-auto mb-10">
-            Sponsorship positions are limited per city and per season. Inquire below
-            to learn about availability and partnership structures.
+          <p className="font-sans text-base leading-[1.9] text-text-muted max-w-md mx-auto mb-10">
+            Sponsorship positions are limited per city and per season. Inquire below to learn about availability and partnership structures.
           </p>
-          <Button href="/contact" variant="outline">
-            Inquire About Sponsorship
-          </Button>
+          <Button href="/contact" variant="outline">Inquire About Sponsorship</Button>
         </div>
-
       </div>
     </div>
   )

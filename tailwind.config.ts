@@ -9,27 +9,25 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'bg-primary':   '#0a0807',
+        'bg-primary':   '#0c0a07',
+        'bg-warm':      '#110e0a',
         'gold':         '#c9a84c',
         'gold-light':   '#e2c97e',
         'gold-faint':   '#7a6030',
-        'surface':      '#141008',
+        'surface':      '#151008',
         'surface-2':    '#1e1812',
-        'border-gold':  'rgba(201, 168, 76, 0.18)',
-        'text-cream':   '#e8dcc8',
-        'text-muted':   '#a08d6e',     // was #8a7355 — bumped for readability
-        'text-faint':   '#6a5a42',     // was #5a4a35 — bumped for readability
+        'border-gold':  'rgba(201, 168, 76, 0.2)',
+        'text-cream':   '#f0e8da',     // near-white warm cream — very readable
+        'text-muted':   '#c0aa88',     // clearly visible warm tan
+        'text-faint':   '#8a7a60',     // visible even as secondary text
       },
       fontFamily: {
         serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
         sans:  ['Montserrat', 'system-ui', 'sans-serif'],
       },
       letterSpacing: {
-        'ultra': '0.18em',       // was 0.35em — reduced for readability
-        'wide-xl': '0.12em',     // was 0.2em — reduced for readability
-      },
-      backgroundImage: {
-        'gold-gradient': 'linear-gradient(135deg, #c9a84c 0%, #e2c97e 50%, #c9a84c 100%)',
+        'ultra': '0.12em',
+        'wide-xl': '0.08em',
       },
     },
   },

@@ -18,10 +18,10 @@ export default function Header() {
         <Link href="/" className="flex items-center gap-3 group">
           <TableLogo className="w-8 h-8 text-gold opacity-90 group-hover:opacity-100 transition-opacity" />
           <div className="leading-none">
-            <div className="font-serif text-sm tracking-wide-xl text-gold uppercase">
+            <div className="font-serif text-base tracking-wide-xl text-gold uppercase">
               {siteContent.brand.name}
             </div>
-            <div className="font-sans text-[10px] tracking-wide-xl text-text-muted uppercase">
+            <div className="font-sans text-[10px] font-medium tracking-wide-xl text-text-muted uppercase">
               ({siteContent.brand.byline})
             </div>
           </div>
@@ -35,7 +35,7 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`font-sans text-[11px] font-medium tracking-ultra uppercase transition-colors duration-200 ${
+                className={`font-sans text-xs font-medium tracking-ultra uppercase transition-colors duration-200 ${
                   active
                     ? 'text-gold'
                     : 'text-text-muted hover:text-gold'
@@ -80,7 +80,7 @@ export default function Header() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className={`font-sans text-xs font-medium tracking-ultra uppercase transition-colors ${
+                className={`font-sans text-sm font-medium tracking-ultra uppercase transition-colors ${
                   active ? 'text-gold' : 'text-text-muted hover:text-gold'
                 }`}
               >

@@ -26,8 +26,6 @@ export default function Footer() {
   return (
     <footer className="border-t border-border-gold bg-bg-primary">
       <div className="max-w-7xl mx-auto px-6 py-8 flex flex-col items-center gap-5">
-
-        {/* Icon row */}
         <div className="flex items-center gap-6">
           <a
             href={footer.instagramUrl}
@@ -47,8 +45,7 @@ export default function Footer() {
           </a>
         </div>
 
-        {/* Links row */}
-        <div className="flex items-center gap-2 font-sans text-[11px] font-medium tracking-ultra uppercase text-text-muted">
+        <div className="flex items-center gap-2 font-sans text-xs font-semibold tracking-ultra uppercase text-text-muted">
           <Link href={footer.applyHref} className="hover:text-gold transition-colors duration-200">
             Apply
           </Link>
@@ -57,7 +54,6 @@ export default function Footer() {
             Sponsors
           </Link>
         </div>
-
       </div>
     </footer>
   )

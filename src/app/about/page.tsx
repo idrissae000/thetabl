@@ -6,10 +6,9 @@ import { siteContent } from '@/data/site'
 
 export const metadata: Metadata = {
   title: 'About — The Table',
-  description: 'The Table is a private room for exceptional individuals. Learn about who we are, who it\'s for, and why it exists.',
+  description: 'The Table is a private room for exceptional individuals.',
 }
 
-// Real images from the current site
 const ABOUT_IMAGE = 'https://thetablebybb.carrd.co/assets/images/image03.jpg?v=1da90e90'
 
 const pillars = [
@@ -36,45 +35,29 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen px-6 py-20">
       <div className="max-w-5xl mx-auto">
-
-        {/* Page header */}
         <div className="text-center mb-16">
-          <p className="font-sans text-[11px] tracking-ultra uppercase text-text-muted mb-4">
-            Our Story
-          </p>
-          <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-gold mb-4 leading-tight">
-            {about.heading}
-          </h1>
-          <p className="font-serif text-xl italic text-text-cream/70">
-            {about.subheading}
-          </p>
+          <p className="font-sans text-xs font-medium tracking-ultra uppercase text-text-muted mb-4">Our Story</p>
+          <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-gold mb-4 leading-tight">{about.heading}</h1>
+          <p className="font-serif text-xl italic text-text-cream/80">{about.subheading}</p>
           <Divider className="mt-8 max-w-xs mx-auto" />
         </div>
 
-        {/* Main body + image */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start mb-20">
           <div>
-            <p className="font-sans text-[15px] leading-[1.85] text-text-cream/85 mb-10">
-              {about.body}
-            </p>
-            <blockquote className="border-l-2 border-gold/40 pl-5">
-              <p className="font-serif text-xl italic text-text-cream/85 leading-snug mb-2">
+            <p className="font-sans text-base leading-[1.9] text-text-cream/90 mb-10">{about.body}</p>
+            <blockquote className="border-l-2 border-gold/50 pl-5">
+              <p className="font-serif text-xl italic text-text-cream/90 leading-snug mb-2">
                 &ldquo;{about.quote}&rdquo;
               </p>
-              <cite className="font-sans text-[11px] tracking-ultra uppercase text-text-muted not-italic">
+              <cite className="font-sans text-xs font-medium tracking-ultra uppercase text-text-muted not-italic">
                 — {about.quoteAttribution}
               </cite>
             </blockquote>
           </div>
 
-          {/* Real image from current site */}
           <div className="relative aspect-[3/4] w-full max-w-sm mx-auto lg:max-w-none overflow-hidden">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={ABOUT_IMAGE}
-              alt="Guests mingling during a Table session"
-              className="w-full h-full object-cover"
-            />
+            <img src={ABOUT_IMAGE} alt="Guests mingling during a Table session" className="w-full h-full object-cover" />
             <div className="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-gold/40" />
             <div className="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-gold/40" />
           </div>
@@ -82,32 +65,23 @@ export default function AboutPage() {
 
         <Divider className="mb-16" />
 
-        {/* Inside The Table pillars */}
         <div className="mb-16">
           <SectionHeading className="mb-12">Inside The Table</SectionHeading>
-
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {pillars.map(pillar => (
               <div key={pillar.id} className="border border-border-gold p-8 relative">
                 <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-gold/30" />
                 <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-gold/30" />
-                <h3 className="font-serif text-xl text-gold mb-4">
-                  {pillar.heading}
-                </h3>
-                <p className="font-sans text-[14px] leading-[1.8] text-text-muted">
-                  {pillar.body}
-                </p>
+                <h3 className="font-serif text-xl text-gold mb-4">{pillar.heading}</h3>
+                <p className="font-sans text-sm leading-[1.8] text-text-muted">{pillar.body}</p>
               </div>
             ))}
           </div>
         </div>
 
         <div className="text-center">
-          <Button href="/apply" variant="outline">
-            Apply to Join
-          </Button>
+          <Button href="/apply" variant="outline">Apply to Join</Button>
         </div>
-
       </div>
     </div>
   )
