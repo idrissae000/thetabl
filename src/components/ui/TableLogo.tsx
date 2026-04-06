@@ -1,4 +1,5 @@
-// The Table logo — round pedestal table with 3 candles, 3/4 perspective view
+// Clean, minimal candelabra mark. If the client provides their exact logo asset,
+// swap this file for a simple <img> or inline the real SVG.
 type TableLogoProps = {
   className?: string
 }
@@ -6,43 +7,43 @@ type TableLogoProps = {
 export default function TableLogo({ className = '' }: TableLogoProps) {
   return (
     <svg
-      viewBox="0 0 100 100"
+      viewBox="0 0 80 72"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
     >
-      {/* Candle flames */}
-      <ellipse cx="36" cy="14" rx="2.8" ry="5" fill="currentColor" opacity="0.6" />
-      <ellipse cx="50" cy="10" rx="3" ry="5.5" fill="currentColor" opacity="0.85" />
-      <ellipse cx="64" cy="14" rx="2.8" ry="5" fill="currentColor" opacity="0.6" />
+      {/* Three candle flames */}
+      <ellipse cx="26" cy="8"  rx="3" ry="5" fill="currentColor" opacity="0.55" />
+      <ellipse cx="40" cy="5"  rx="3" ry="5.5" fill="currentColor" opacity="0.85" />
+      <ellipse cx="54" cy="8"  rx="3" ry="5" fill="currentColor" opacity="0.55" />
 
-      {/* Candle sticks */}
-      <rect x="34.5" y="18" width="3" height="18" rx="1.5" fill="currentColor" opacity="0.7" />
-      <rect x="48.5" y="15" width="3" height="21" rx="1.5" fill="currentColor" opacity="0.85" />
-      <rect x="62.5" y="18" width="3" height="18" rx="1.5" fill="currentColor" opacity="0.7" />
+      {/* Three candle sticks */}
+      <rect x="24.5" y="12" width="3" height="16" rx="1.5" fill="currentColor" opacity="0.6" />
+      <rect x="38.5" y="10" width="3" height="18" rx="1.5" fill="currentColor" opacity="0.8" />
+      <rect x="52.5" y="12" width="3" height="16" rx="1.5" fill="currentColor" opacity="0.6" />
 
-      {/* Table top — elliptical perspective */}
-      <ellipse cx="50" cy="38" rx="34" ry="8" stroke="currentColor" strokeWidth="2.2" fill="none" />
+      {/* Table top — clean horizontal bar */}
+      <rect x="8" y="30" width="64" height="3.5" rx="1.5" fill="currentColor" />
 
-      {/* Table top surface fill for depth */}
-      <ellipse cx="50" cy="38" rx="34" ry="8" fill="currentColor" opacity="0.08" />
-
-      {/* Center pedestal column */}
+      {/* Decorative curved supports */}
       <path
-        d="M46 46 L46 72 Q46 74 48 74 L52 74 Q54 74 54 72 L54 46"
-        fill="currentColor"
-        opacity="0.7"
+        d="M20 34 Q20 50, 30 50 Q35 50, 35 45"
+        stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none" opacity="0.65"
+      />
+      <path
+        d="M60 34 Q60 50, 50 50 Q45 50, 45 45"
+        stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none" opacity="0.65"
       />
 
-      {/* Pedestal base — elliptical */}
-      <ellipse cx="50" cy="78" rx="22" ry="5.5" stroke="currentColor" strokeWidth="2" fill="none" />
-      <ellipse cx="50" cy="78" rx="22" ry="5.5" fill="currentColor" opacity="0.06" />
+      {/* Center pedestal */}
+      <line x1="40" y1="34" x2="40" y2="52" stroke="currentColor" strokeWidth="2" opacity="0.5" />
 
-      {/* Base foot detail */}
-      <ellipse cx="50" cy="82" rx="16" ry="3" stroke="currentColor" strokeWidth="1.2" fill="none" opacity="0.4" />
+      {/* Base */}
+      <rect x="28" y="52" width="24" height="2.5" rx="1" fill="currentColor" opacity="0.6" />
 
-      {/* Subtle decorative ring on pedestal */}
-      <ellipse cx="50" cy="56" rx="5" ry="1.5" stroke="currentColor" strokeWidth="1" fill="none" opacity="0.3" />
+      {/* Ornamental lines below */}
+      <line x1="24" y1="60" x2="56" y2="60" stroke="currentColor" strokeWidth="0.8" opacity="0.25" />
+      <line x1="30" y1="64" x2="50" y2="64" stroke="currentColor" strokeWidth="0.6" opacity="0.15" />
     </svg>
   )
 }
