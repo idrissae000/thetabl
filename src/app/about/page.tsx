@@ -33,7 +33,7 @@ export default function AboutPage() {
   const { about } = siteContent
 
   return (
-    <div className="min-h-screen px-6 py-20">
+    <div className="min-h-screen px-4 sm:px-6 pt-24 pb-20">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-16">
           <p className="font-sans text-xs font-medium tracking-ultra uppercase text-text-muted mb-4">Our Story</p>

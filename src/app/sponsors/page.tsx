@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function SponsorsPage() {
   return (
-    <div className="min-h-screen px-6 py-20">
+    <div className="min-h-screen px-4 sm:px-6 pt-24 pb-20">
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-14">
           <SectionHeading subtitle="Partners & Sponsors">Sponsors</SectionHeading>
