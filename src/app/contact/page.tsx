@@ -32,7 +32,7 @@ export default function ContactPage() {
     setStatus('submitting')
 
     try {
-      const res = await fetch('https://formspree.io/f/maqpwkaq', {
+      const res = await fetch(`https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_ID}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ _type: 'contact', name, email, inquiryType, message }),

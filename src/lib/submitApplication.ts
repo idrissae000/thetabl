@@ -1,9 +1,10 @@
 // Formspree submission logic — isolated here so the endpoint and field contract
 // never need to change when the form UI is restyled or the CMS is added.
 //
-// DO NOT change FORMSPREE_ENDPOINT — it is tied to the client's Formspree account.
+// Set NEXT_PUBLIC_FORMSPREE_ID in your .env.local file.
 
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/maqpwkaq'
+const FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID
+const FORMSPREE_ENDPOINT = `https://formspree.io/f/${FORMSPREE_ID}`
 
 export type ApplicationFields = {
   fullName: string
