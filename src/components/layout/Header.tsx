@@ -15,16 +15,8 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
 
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 group">
-          <TableLogo className="w-8 h-8 text-gold opacity-90 group-hover:opacity-100 transition-opacity" />
-          <div className="leading-none">
-            <div className="font-serif text-base tracking-wide-xl text-gold uppercase">
-              {siteContent.brand.name}
-            </div>
-            <div className="font-sans text-[10px] font-medium tracking-wide-xl text-text-muted uppercase">
-              ({siteContent.brand.byline})
-            </div>
-          </div>
+        <Link href="/" className="group">
+          <TableLogo className="h-10 w-auto opacity-90 group-hover:opacity-100 transition-opacity" />
         </Link>
 
         {/* Desktop nav */}
