@@ -23,7 +23,7 @@ function CalendarCard({ cityCode, cityName, dates, image }: { cityCode: string; 
       </div>
       <div className="relative z-10 flex flex-col gap-0.5">
         {dates.map((date, i) => (
-          <div key={i} className="font-serif text-xl text-text-cream italic">{date}</div>
+          <div key={i} className="font-sans text-sm sm:text-base font-medium text-text-cream tracking-wide">{date}</div>
         ))}
       </div>
       <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-gold/25" />

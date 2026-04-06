@@ -7,8 +7,7 @@ export type City = {
   id: string
   code: string       // Short display code, e.g. "NYC"
   name: string       // Full city name, e.g. "New York"
-  label: string      // City label shown under code, e.g. "New York"
-  state?: string     // Optional state label shown under name
+  state: string      // State or country, e.g. "New York"
   status: CityStatus
   image?: string     // Path to city background image
 }
@@ -19,7 +18,6 @@ export const cities: City[] = [
     id: 'nyc',
     code: 'NYC',
     name: 'New York',
-    label: 'New York',
     state: 'New York',
     status: 'active',
     image: '/images/cities/nyc.jpg',
@@ -28,8 +26,7 @@ export const cities: City[] = [
     id: 'htx',
     code: 'HTX',
     name: 'Houston',
-    label: 'Houston',
-    state: 'Houston',
+    state: 'Texas',
     status: 'active',
     image: '/images/cities/houston.jpg',
   },
@@ -37,26 +34,23 @@ export const cities: City[] = [
     id: 'dtx',
     code: 'DTX',
     name: 'Dallas',
-    label: 'Dallas',
-    state: 'Dallas',
+    state: 'Texas',
     status: 'active',
     image: '/images/cities/dallas.jpg',
   },
   {
-    id: 'austin',
-    code: 'Austin',
+    id: 'atx',
+    code: 'ATX',
     name: 'Austin',
-    label: 'Austin',
-    state: 'Austin',
+    state: 'Texas',
     status: 'active',
     image: '/images/cities/austin.jpg',
   },
   {
-    id: 'sf',
-    code: 'SF',
-    name: 'San Francisco',
-    label: 'Chicago',   // As shown in reference image — verify with client
-    state: 'Chicago',
+    id: 'chi',
+    code: 'CHI',
+    name: 'Chicago',
+    state: 'Illinois',
     status: 'active',
     image: '/images/cities/sf.jpg',
   },
@@ -64,36 +58,43 @@ export const cities: City[] = [
   {
     id: 'dc',
     code: 'DC',
-    name: 'Washington D.C.',
-    label: 'Washington D.C.',
+    name: 'Washington',
+    state: 'D.C.',
     status: 'coming-soon',
   },
   {
     id: 'la',
     code: 'LA',
     name: 'Los Angeles',
-    label: 'Los Angeles',
+    state: 'California',
     status: 'coming-soon',
   },
   {
     id: 'det',
     code: 'DET',
     name: 'Detroit',
-    label: 'Detroit',
+    state: 'Michigan',
+    status: 'coming-soon',
+  },
+  {
+    id: 'sf',
+    code: 'SF',
+    name: 'San Francisco',
+    state: 'California',
     status: 'coming-soon',
   },
   {
     id: 'london',
-    code: 'London',
+    code: 'LDN',
     name: 'London',
-    label: 'London',
+    state: 'United Kingdom',
     status: 'coming-soon',
   },
   {
     id: 'dubai',
-    code: 'Dubai',
+    code: 'DXB',
     name: 'Dubai',
-    label: 'Dubai',
+    state: 'UAE',
     status: 'coming-soon',
   },
 ]
