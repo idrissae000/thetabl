@@ -47,3 +47,93 @@
 ::-webkit-scrollbar-track { background: #0a0807; }
 ::-webkit-scrollbar-thumb { background: rgba(201, 168, 76, 0.2); border-radius: 2px; }
 ::-webkit-scrollbar-thumb:hover { background: rgba(201, 168, 76, 0.4); }
+
+/* ─── Animations ─── */
+
+/* Fade-in on scroll (IntersectionObserver driven) */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  from { background-position: -200% 0; }
+  to   { background-position: 200% 0; }
+}
+
+/* Utility classes for scroll-triggered animations */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.animate-on-scroll.is-visible {
+  animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Staggered children */
+.animate-on-scroll.is-visible .stagger-1 { animation-delay: 0.1s; }
+.animate-on-scroll.is-visible .stagger-2 { animation-delay: 0.2s; }
+.animate-on-scroll.is-visible .stagger-3 { animation-delay: 0.3s; }
+.animate-on-scroll.is-visible .stagger-4 { animation-delay: 0.4s; }
+
+/* Hero-specific animations */
+.hero-fade {
+  animation: fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+}
+
+.hero-fade-delayed {
+  animation: fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) 0.5s both;
+}
+
+.hero-fade-late {
+  animation: fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) 0.8s both;
+}
+
+/* Mobile menu animation */
+.mobile-menu-enter {
+  animation: slideDown 0.25s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Smooth gold glow on hover */
+.glow-hover {
+  transition: box-shadow 0.4s ease, border-color 0.4s ease;
+}
+.glow-hover:hover {
+  box-shadow: 0 0 20px rgba(201, 168, 76, 0.08), inset 0 0 20px rgba(201, 168, 76, 0.03);
+}
+
+/* Subtle float for decorative elements */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-4px); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .animate-on-scroll { opacity: 1; transform: none; }
+}
