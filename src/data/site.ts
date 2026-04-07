@@ -45,8 +45,8 @@ export const siteContent = {
   },
 
   footer: {
-    instagramUrl: 'https://www.instagram.com',
-    emailAddress: 'contact@thetable.com',
+    instagramUrl: 'https://www.instagram.com/thetablebyb.b/?utm_source=ig_web_button_share_sheet',
+    contactHref: '/contact',
     applyHref: '/apply',
     sponsorsHref: '/sponsors',
   },

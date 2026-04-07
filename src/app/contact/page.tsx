@@ -105,13 +105,9 @@ export default function ContactPage() {
           </form>
         )}
 
-        <div className="mt-14 pt-10 border-t border-border-gold flex flex-col sm:flex-row items-center justify-center gap-8 text-center">
-          <a href={`mailto:${siteContent.footer.emailAddress}`} className="font-sans text-xs font-medium tracking-ultra uppercase text-text-muted hover:text-gold transition-colors duration-200">
-            {siteContent.footer.emailAddress}
-          </a>
-          <span className="hidden sm:block text-text-faint">|</span>
+        <div className="mt-14 pt-10 border-t border-border-gold flex items-center justify-center text-center">
           <a href={siteContent.footer.instagramUrl} target="_blank" rel="noopener noreferrer" className="font-sans text-xs font-medium tracking-ultra uppercase text-text-muted hover:text-gold transition-colors duration-200">
-            Instagram
+            Follow us on Instagram
           </a>
         </div>
       </div>

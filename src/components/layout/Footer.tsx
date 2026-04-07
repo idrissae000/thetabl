@@ -36,13 +36,13 @@ export default function Footer() {
           >
             <InstagramIcon />
           </a>
-          <a
-            href={`mailto:${footer.emailAddress}`}
+          <Link
+            href={footer.contactHref}
             className="text-text-muted hover:text-gold transition-colors duration-200"
-            aria-label="Email"
+            aria-label="Contact"
           >
             <EmailIcon />
-          </a>
+          </Link>
         </div>
 
         <div className="flex items-center gap-2 font-sans text-xs font-semibold tracking-ultra uppercase text-text-muted">
