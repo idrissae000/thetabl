@@ -7,6 +7,7 @@ const FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID
 const FORMSPREE_ENDPOINT = `https://formspree.io/f/${FORMSPREE_ID}`
 
 export type ApplicationFields = {
+  // Step 1 — original fields
   fullName: string
   age: string
   instagram: string
@@ -16,6 +17,15 @@ export type ApplicationFields = {
   city: string
   otherCity: string   // only sent when city === 'Other'
   notes: string
+  // Step 2 — extended questions
+  roleIndustry: string
+  whyJoin: string
+  currentlyBuilding: string
+  whySelected: string
+  referredBy: string
+  interestedLocations: string[]
+  howHeard: string
+  hostingInterest: string
 }
 
 export type SubmitResult =
@@ -28,6 +38,7 @@ export async function submitApplication(
   // Build the payload exactly as the original site did:
   // When city is "Other", include city_final with the user-typed value.
   const payload: Record<string, string> = {
+    // Step 1
     fullName:  fields.fullName,
     age:       fields.age,
     instagram: fields.instagram,
@@ -36,6 +47,15 @@ export async function submitApplication(
     phone:     fields.phone,
     city:      fields.city,
     notes:     fields.notes,
+    // Step 2
+    roleIndustry:       fields.roleIndustry,
+    whyJoin:            fields.whyJoin,
+    currentlyBuilding:  fields.currentlyBuilding,
+    whySelected:        fields.whySelected,
+    referredBy:         fields.referredBy,
+    interestedLocations: fields.interestedLocations.join(', '),
+    howHeard:           fields.howHeard,
+    hostingInterest:    fields.hostingInterest,
   }
 
   if (fields.city === 'Other' && fields.otherCity.trim()) {
