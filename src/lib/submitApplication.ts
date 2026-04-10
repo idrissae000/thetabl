@@ -39,30 +39,32 @@ export async function submitApplication(
     return { ok: false, error: 'Form configuration error — the submission endpoint is not set. Please contact the site owner.' }
   }
 
-  // Build the payload. When city is "Other", include city_final.
+  // Build the payload with clean, human-readable field labels for
+  // the Formspree/email output. Internal state keys stay camelCase
+  // in code; only the submitted JSON keys are relabeled here.
   const payload: Record<string, string> = {
     // Step 1
-    fullName:  fields.fullName,
-    age:       fields.age,
-    instagram: fields.instagram,
-    email:     fields.email,
-    linkedin:  fields.linkedin,
-    phone:     fields.phone,
-    city:      fields.city,
-    notes:     fields.notes,
+    'Full Name':      fields.fullName,
+    'Age':            fields.age,
+    'Instagram':      fields.instagram,
+    'Email':          fields.email,
+    'LinkedIn':       fields.linkedin,
+    'Phone Number':   fields.phone,
+    'City':           fields.city,
+    'Notes':          fields.notes,
     // Step 2
-    roleIndustry:        fields.roleIndustry,
-    whyJoin:             fields.whyJoin,
-    currentlyBuilding:   fields.currentlyBuilding,
-    whySelected:         fields.whySelected,
-    referredBy:          fields.referredBy,
-    interestedLocations: fields.interestedLocations.join(', '),
-    howHeard:            fields.howHeard,
-    hostingInterest:     fields.hostingInterest,
+    'Current Role / Occupation / Industry':             fields.roleIndustry,
+    'Why do you want to join The Table?':                fields.whyJoin,
+    'What are you currently building or working towards?': fields.currentlyBuilding,
+    'Why do you think you should be selected?':          fields.whySelected,
+    'Referred to The Table by':                          fields.referredBy,
+    'Table location(s) interested in':                   fields.interestedLocations.join(', '),
+    'How did you hear about us?':                        fields.howHeard,
+    'Interest in hosting a table':                       fields.hostingInterest,
   }
 
   if (fields.city === 'Other' && fields.otherCity.trim()) {
-    payload.city_final = fields.otherCity.trim()
+    payload['City (Other)'] = fields.otherCity.trim()
   }
 
   try {
