@@ -28,7 +28,7 @@ export const cities: City[] = [
     name: 'Houston',
     state: 'Texas',
     status: 'active',
-    image: '/images/cities/houston.jpg',
+    image: '/images/cities/htx.jpg',
   },
   {
     id: 'dtx',
@@ -36,7 +36,7 @@ export const cities: City[] = [
     name: 'Dallas',
     state: 'Texas',
     status: 'active',
-    image: '/images/cities/dallas.jpg',
+    image: '/images/cities/dtx.jpg',
   },
   {
     id: 'atx',
@@ -44,7 +44,7 @@ export const cities: City[] = [
     name: 'Austin',
     state: 'Texas',
     status: 'active',
-    image: '/images/cities/austin.jpg',
+    image: '/images/cities/atx.jpg',
   },
   {
     id: 'chi',
@@ -52,7 +52,7 @@ export const cities: City[] = [
     name: 'Chicago',
     state: 'Illinois',
     status: 'active',
-    image: '/images/cities/sf.jpg',
+    image: '/images/cities/chi.jpg',
   },
   // Coming soon cities
   {
@@ -61,6 +61,7 @@ export const cities: City[] = [
     name: 'Washington',
     state: 'D.C.',
     status: 'coming-soon',
+    image: '/images/cities/dc.jpg',
   },
   {
     id: 'la',
@@ -68,6 +69,7 @@ export const cities: City[] = [
     name: 'Los Angeles',
     state: 'California',
     status: 'coming-soon',
+    image: '/images/cities/la.jpg',
   },
   {
     id: 'det',
@@ -75,6 +77,7 @@ export const cities: City[] = [
     name: 'Detroit',
     state: 'Michigan',
     status: 'coming-soon',
+    image: '/images/cities/det.jpg',
   },
   {
     id: 'sf',
@@ -82,6 +85,7 @@ export const cities: City[] = [
     name: 'San Francisco',
     state: 'California',
     status: 'coming-soon',
+    image: '/images/cities/sf.jpg',
   },
   {
     id: 'london',
@@ -89,6 +93,7 @@ export const cities: City[] = [
     name: 'London',
     state: 'United Kingdom',
     status: 'coming-soon',
+    image: '/images/cities/ldn.jpg',
   },
   {
     id: 'dubai',
@@ -96,6 +101,7 @@ export const cities: City[] = [
     name: 'Dubai',
     state: 'UAE',
     status: 'coming-soon',
+    image: '/images/cities/dxb.jpg',
   },
 ]
 
