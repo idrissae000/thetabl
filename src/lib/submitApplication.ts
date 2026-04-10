@@ -35,8 +35,11 @@ export type SubmitResult =
 export async function submitApplication(
   fields: ApplicationFields,
 ): Promise<SubmitResult> {
-  // Build the payload exactly as the original site did:
-  // When city is "Other", include city_final with the user-typed value.
+  if (!FORMSPREE_ID) {
+    return { ok: false, error: 'Form configuration error — the submission endpoint is not set. Please contact the site owner.' }
+  }
+
+  // Build the payload. When city is "Other", include city_final.
   const payload: Record<string, string> = {
     // Step 1
     fullName:  fields.fullName,
@@ -48,14 +51,14 @@ export async function submitApplication(
     city:      fields.city,
     notes:     fields.notes,
     // Step 2
-    roleIndustry:       fields.roleIndustry,
-    whyJoin:            fields.whyJoin,
-    currentlyBuilding:  fields.currentlyBuilding,
-    whySelected:        fields.whySelected,
-    referredBy:         fields.referredBy,
+    roleIndustry:        fields.roleIndustry,
+    whyJoin:             fields.whyJoin,
+    currentlyBuilding:   fields.currentlyBuilding,
+    whySelected:         fields.whySelected,
+    referredBy:          fields.referredBy,
     interestedLocations: fields.interestedLocations.join(', '),
-    howHeard:           fields.howHeard,
-    hostingInterest:    fields.hostingInterest,
+    howHeard:            fields.howHeard,
+    hostingInterest:     fields.hostingInterest,
   }
 
   if (fields.city === 'Other' && fields.otherCity.trim()) {
@@ -65,7 +68,10 @@ export async function submitApplication(
   try {
     const res = await fetch(FORMSPREE_ENDPOINT, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
       body: JSON.stringify(payload),
     })
 
@@ -73,8 +79,34 @@ export async function submitApplication(
       return { ok: true }
     }
 
-    return { ok: false, error: 'Something went wrong. Please try again.' }
-  } catch {
-    return { ok: false, error: 'Something went wrong. Please try again.' }
+    // Surface the real Formspree error instead of a generic message
+    try {
+      const body = await res.json()
+      const msg = body?.error || body?.errors?.map((e: { message?: string }) => e.message).join(', ')
+      if (msg) {
+        return { ok: false, error: `Submission failed: ${msg}` }
+      }
+    } catch {
+      // Response wasn't JSON — fall through to status-based message
+    }
+
+    if (res.status === 429) {
+      return { ok: false, error: 'Too many submissions. Please wait a few minutes and try again.' }
+    }
+    if (res.status === 403) {
+      return { ok: false, error: 'Submission was blocked. Please ensure you are not using a VPN or ad-blocker that interferes with form submissions.' }
+    }
+    if (res.status >= 500) {
+      return { ok: false, error: 'The submission service is temporarily unavailable. Please try again in a few minutes.' }
+    }
+
+    return { ok: false, error: `Submission failed (status ${res.status}). Please review your answers and try again.` }
+  } catch (err) {
+    // Network error — no response received at all
+    const message = err instanceof Error ? err.message : 'Unknown error'
+    if (message.includes('Failed to fetch') || message.includes('NetworkError')) {
+      return { ok: false, error: 'Network error — please check your internet connection and try again.' }
+    }
+    return { ok: false, error: `Could not reach the submission service: ${message}` }
   }
 }
