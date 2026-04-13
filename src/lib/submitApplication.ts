@@ -34,6 +34,10 @@ export type SubmitResult =
 
 export async function submitApplication(
   fields: ApplicationFields,
+  // Formspree honeypot — any value causes the submission to be silently
+  // dropped server-side as spam. Wired through here rather than mixed into
+  // ApplicationFields so the user-visible fields stay typed as required data.
+  gotcha = '',
 ): Promise<SubmitResult> {
   if (!FORMSPREE_ID) {
     return { ok: false, error: 'Form configuration error — the submission endpoint is not set. Please contact the site owner.' }
@@ -66,6 +70,10 @@ export async function submitApplication(
   if (fields.city === 'Other' && fields.otherCity.trim()) {
     payload['City (Other)'] = fields.otherCity.trim()
   }
+
+  // Honeypot key MUST be `_gotcha` — Formspree treats this field specially
+  // and drops submissions where it has any value.
+  payload['_gotcha'] = gotcha
 
   try {
     const res = await fetch(FORMSPREE_ENDPOINT, {

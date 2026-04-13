@@ -204,6 +204,8 @@ export default function ApplicationForm() {
   const [errors, setErrors] = useState<FieldErrors>({})
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
   const [submitError, setSubmitError] = useState('')
+  // Formspree honeypot — hidden from humans, filled by bots.
+  const [gotcha, setGotcha] = useState('')
 
   const formRef = useRef<HTMLDivElement>(null)
 
@@ -277,7 +279,7 @@ export default function ApplicationForm() {
     setErrors({})
     setStatus('submitting')
     setSubmitError('')
-    const result = await submitApplication(fields)
+    const result = await submitApplication(fields, gotcha)
 
     if (result.ok) {
       setStatus('success')
@@ -345,6 +347,19 @@ export default function ApplicationForm() {
       )}
 
       <form onSubmit={handleSubmit} noValidate className="space-y-6">
+
+        {/* Honeypot — hidden from humans, filled by bots. Any value causes
+            Formspree to drop the submission as spam. */}
+        <input
+          type="text"
+          name="_gotcha"
+          tabIndex={-1}
+          autoComplete="off"
+          value={gotcha}
+          onChange={e => setGotcha(e.target.value)}
+          style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }}
+          aria-hidden="true"
+        />
 
         {/* ═══════════ STEP 1 ═══════════ */}
         <div className={step === 1 ? undefined : 'hidden'}>

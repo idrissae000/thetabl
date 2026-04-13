@@ -23,6 +23,9 @@ export default function ContactPage() {
   const [email, setEmail] = useState('')
   const [inquiryType, setInquiryType] = useState('')
   const [message, setMessage] = useState('')
+  // Formspree honeypot — any value submitted in `_gotcha` causes the
+  // submission to be silently dropped server-side as likely spam.
+  const [gotcha, setGotcha] = useState('')
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
 
   async function handleSubmit(e: React.FormEvent) {
@@ -35,7 +38,7 @@ export default function ContactPage() {
       const res = await fetch(`https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_ID}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ _type: 'contact', name, email, inquiryType, message }),
+        body: JSON.stringify({ _type: 'contact', name, email, inquiryType, message, _gotcha: gotcha }),
       })
       setStatus(res.ok ? 'success' : 'error')
     } catch {
@@ -65,6 +68,17 @@ export default function ContactPage() {
           </div>
         ) : (
           <form onSubmit={handleSubmit} noValidate className="space-y-6">
+            {/* Honeypot — hidden from humans, filled by bots. */}
+            <input
+              type="text"
+              name="_gotcha"
+              tabIndex={-1}
+              autoComplete="off"
+              value={gotcha}
+              onChange={e => setGotcha(e.target.value)}
+              style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }}
+              aria-hidden="true"
+            />
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
                 <label className={labelBase}>Name <span className="text-gold/50">*</span></label>
