@@ -7,8 +7,12 @@ import { siteContent } from '@/data/site'
 const inputBase =
   'w-full bg-transparent border border-border-gold text-text-cream placeholder-text-faint font-sans text-base px-4 py-3 outline-none transition-colors duration-200 focus:border-gold/60'
 
+const inputErrorBorder = 'border-red-400/60 focus:border-red-400/80'
+
 const labelBase =
   'block font-sans text-xs font-semibold tracking-ultra uppercase text-text-muted mb-2'
+
+const errorBase = 'mt-1.5 font-sans text-xs text-red-400'
 
 const INQUIRY_TYPES = [
   'General Inquiry',
@@ -17,6 +21,8 @@ const INQUIRY_TYPES = [
   'Membership Question',
   'Other',
 ]
+
+type ContactErrors = { name?: string; email?: string; message?: string }
 
 export default function ContactPage() {
   const [name, setName] = useState('')
@@ -27,11 +33,25 @@ export default function ContactPage() {
   // submission to be silently dropped server-side as likely spam.
   const [gotcha, setGotcha] = useState('')
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
+  const [errors, setErrors] = useState<ContactErrors>({})
+
+  function validate(): ContactErrors {
+    const errs: ContactErrors = {}
+    if (!name.trim()) errs.name = 'Name is required.'
+    if (!email.trim()) errs.email = 'Email is required.'
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errs.email = 'Enter a valid email address.'
+    if (!message.trim()) errs.message = 'Message is required.'
+    return errs
+  }
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    if (!name.trim() || !email.trim() || !message.trim()) return
-
+    const errs = validate()
+    if (Object.keys(errs).length > 0) {
+      setErrors(errs)
+      return
+    }
+    setErrors({})
     setStatus('submitting')
 
     try {
@@ -44,6 +64,10 @@ export default function ContactPage() {
     } catch {
       setStatus('error')
     }
+  }
+
+  function clearFieldError(key: keyof ContactErrors) {
+    if (errors[key]) setErrors(prev => ({ ...prev, [key]: undefined }))
   }
 
   return (
@@ -82,11 +106,13 @@ export default function ContactPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
                 <label className={labelBase}>Name <span className="text-gold/50">*</span></label>
-                <input type="text" value={name} onChange={e => setName(e.target.value)} placeholder="Your name" required className={inputBase} />
+                <input type="text" value={name} onChange={e => { setName(e.target.value); clearFieldError('name') }} placeholder="Your name" required className={`${inputBase} ${errors.name ? inputErrorBorder : ''}`} />
+                {errors.name && <p className={errorBase}>{errors.name}</p>}
               </div>
               <div>
                 <label className={labelBase}>Email <span className="text-gold/50">*</span></label>
-                <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="you@example.com" required className={inputBase} />
+                <input type="email" value={email} onChange={e => { setEmail(e.target.value); clearFieldError('email') }} placeholder="you@example.com" required className={`${inputBase} ${errors.email ? inputErrorBorder : ''}`} />
+                {errors.email && <p className={errorBase}>{errors.email}</p>}
               </div>
             </div>
 
@@ -107,7 +133,8 @@ export default function ContactPage() {
 
             <div>
               <label className={labelBase}>Message <span className="text-gold/50">*</span></label>
-              <textarea value={message} onChange={e => setMessage(e.target.value)} placeholder="How can we help?" rows={5} required className={`${inputBase} resize-none`} />
+              <textarea value={message} onChange={e => { setMessage(e.target.value); clearFieldError('message') }} placeholder="How can we help?" rows={5} required className={`${inputBase} resize-none ${errors.message ? inputErrorBorder : ''}`} />
+              {errors.message && <p className={errorBase}>{errors.message}</p>}
             </div>
 
             {status === 'error' && <p className="font-sans text-xs text-red-400">Something went wrong. Please try again.</p>}
